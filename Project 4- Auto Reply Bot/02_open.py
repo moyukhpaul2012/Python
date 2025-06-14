@@ -10,7 +10,7 @@ command = '''
 Your command here
 '''
 completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
+  model="your_gpt_model",
   messages=[
     {"role": "system", "content": "Your description to the AI model"},
     {"role": "user", "content": command}
