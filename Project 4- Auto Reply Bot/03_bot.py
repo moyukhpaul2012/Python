@@ -10,7 +10,7 @@ client = OpenAI(
   api_key="<Your Key Here>",
 )
 
-def is_last_message_from_sender(chat_log, sender_name="Rohan Das"):
+def is_last_message_from_sender(chat_log, sender_name="mention_sender_name"):
     # Split the chat log into individual messages
     messages = chat_log.strip().split("/2024] ")[-1]
     if sender_name in messages:
@@ -19,20 +19,20 @@ def is_last_message_from_sender(chat_log, sender_name="Rohan Das"):
     
     
 
-    # Step 1: Click on the chrome icon at coordinates (1639, 1412)
-pyautogui.click(1639, 1412)
+    # Step 1: Click on the chrome icon at coordinates ('x_axis', 'y_axis')
+pyautogui.click(x_axis, 'y_axis')
 
 time.sleep(1)  # Wait for 1 second to ensure the click is registered
 while True:
     time.sleep(5)
-    # Step 2: Drag the mouse from (1003, 237) to (2187, 1258) to select the text
-    pyautogui.moveTo(972,202)
-    pyautogui.dragTo(2213, 1278, duration=2.0, button='left')  # Drag for 1 second
+    # Step 2: Drag the mouse from (x_axis, y_axis) to (x_axis, y_axis) to select the text
+    pyautogui.moveTo(x_axis,y_axis)
+    pyautogui.dragTo(x_axis, y_axis, duration=2.0, button='left')  # Drag for 1 second
 
     # Step 3: Copy the selected text to the clipboard
     pyautogui.hotkey('ctrl', 'c')
     time.sleep(2)  # Wait for 1 second to ensure the copy command is completed
-    pyautogui.click(1994, 281)
+    pyautogui.click(x_axis, y_axis)
 
     # Step 4: Retrieve the text from the clipboard and store it in a variable
     chat_history = pyperclip.paste()
@@ -42,7 +42,7 @@ while True:
     print(is_last_message_from_sender(chat_history))
     if is_last_message_from_sender(chat_history):
         completion = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="your_gpt_model",
         messages=[
             {"role": "system", "content": "Your description to the AI model"},
             {"role": "system", "content": "Your instruction to the AI model to commit no error"},
